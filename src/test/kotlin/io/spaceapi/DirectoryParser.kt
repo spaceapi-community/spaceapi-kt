@@ -55,7 +55,7 @@ class DirectoryParser(directoryUrl: String) {
         // Request directory
         val result = directoryUrl
                 .httpGet()
-                .header("User-Agent", userAgent)
+                .header("user-agent", userAgent)
                 .responseString()
                 .third
         val data = when (result) {
@@ -80,7 +80,7 @@ class DirectoryParser(directoryUrl: String) {
         val requests: List<Pair<String, CancellableRequest>> = spaceEndpoints.map { entry ->
                 val space = entry.key
                 val url = entry.value
-                val req = url.httpGet().header("User-Agent", userAgent)
+                val req = url.httpGet().header("user-agent", userAgent).header("accept", "application/json")
                 // Set request and read timeout to 10s
                 req.executionOptions.timeoutInMillisecond = 10_000
                 req.executionOptions.timeoutReadInMillisecond = 10_000
