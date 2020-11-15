@@ -26,6 +26,15 @@ val parsed = fromJson("{...}")
 ```
 
 
+## Building
+
+To build a JAR file, run:
+
+    ./gradlew build
+
+The resulting JAR files can be found in the `build/libs/` directory.
+
+
 ## Testing
 
 Run the following command to run the unit tests:

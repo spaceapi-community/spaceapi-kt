@@ -1,5 +1,7 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
+version = "0.1.0-SNAPSHOT"
+
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     kotlin("jvm") version "1.4.10"
@@ -16,6 +18,10 @@ repositories {
     jcenter()
 }
 
+java {
+    withSourcesJar()
+}
+
 dependencies {
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
@@ -28,6 +34,15 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+}
+
+tasks.jar {
+    manifest {
+        attributes(mapOf(
+                "Implementation-Title" to project.name,
+                "Implementation-Version" to project.version
+        ))
+    }
 }
 
 tasks.test {

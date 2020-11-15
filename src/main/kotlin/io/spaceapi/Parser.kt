@@ -8,6 +8,8 @@ import io.spaceapi.types.Status
 val format = Json { ignoreUnknownKeys = true }
 
 /**
+ * Main entry point into the library.
+ *
  * Parse a JSON string, return a `Status` instance.
  */
 fun fromJson(json: String): Status {
