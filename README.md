@@ -75,9 +75,18 @@ The resulting JAR files can be found in the `build/libs/` directory.
 
 ## Testing
 
+### Unit Tests
+
 Run the following command to run the unit tests:
 
     ./gradlew test
+
+### Directory Parser
+
+In the `src/test/kotlin/io/spaceapi/` directory there's a `DirectoryParser.kt`
+program that can be executed. It fetches all directory endpoints and tests
+whether the endpoint can be deserialized. If not, an error message is printed.
+
 
 ## License
 
