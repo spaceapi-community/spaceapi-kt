@@ -1,13 +1,12 @@
 package io.spaceapi
 
-import io.spaceapi.types.Status
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ParserTest {
     @Test
     fun testParseV13() {
-        val parsed: Status = fromJson("""
+        val parsed = fromJson("""
             {
               "api": "0.13",
               "space": "Coredump",
@@ -56,7 +55,7 @@ class ParserTest {
 
     @Test
     fun testParseV14() {
-        val parsed: Status = fromJson("""
+        val parsed = fromJson("""
             {
               "api": "0.13",
               "api_compatibility": ["14"],

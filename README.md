@@ -17,6 +17,15 @@ This library supports parsing any valid JSON file using the following schema ver
 - v14
 
 
+## Usage (Kotlin)
+
+```kotlin
+import io.spaceapi.fromJson
+
+val parsed = fromJson("{...}")
+```
+
+
 ## Testing
 
 Run the following command to run the unit tests:
