@@ -17,7 +17,29 @@ This library supports parsing any valid JSON file using the following schema ver
 - v14
 
 
-## Usage (Kotlin)
+## Installing
+
+Add the library to your `build.gradle`:
+
+```groovy
+implementation 'spaceapi-community:spaceapi-kt:0.1.0'
+```
+
+...or to your `pom.xml`:
+
+```xml
+<dependency>
+	<groupId>spaceapi-community</groupId>
+	<artifactId>spaceapi-kt</artifactId>
+	<version>0.1.0</version>
+	<type>pom</type>
+</dependency>
+```
+
+
+## Usage
+
+### Kotlin
 
 ```kotlin
 import io.spaceapi.types.decodeFromString
@@ -27,8 +49,7 @@ import io.spaceapi.types.decodeFromString
 val parsed = decodeFromString("{...}")
 ```
 
-
-## Usage (Java)
+### Java
 
 ```java
 import io.spaceapi.types.Status;
