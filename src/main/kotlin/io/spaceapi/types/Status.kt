@@ -10,7 +10,8 @@ import java.net.URL
 @Serializable
 data class Status(
         val space: String,
-        val api: String,
+        val api: String? = null,
+        val api_compatibility: Set<String> = emptySet(),
         val logo: String,
         val url: URL,
         val location: Location,
