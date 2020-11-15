@@ -1,5 +1,8 @@
 package io.spaceapi
 
+import io.spaceapi.types.State
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -101,5 +104,21 @@ class ParserTest {
         assertEquals(null, parsed.contact.facebook)
 
         assertEquals(listOf("email", "twitter"), parsed.issue_report_channels)
+    }
+
+    /**
+     * Regression test for #2.
+     */
+    @Test
+    fun parseFloatAsInteger() {
+        val parsed: State = Json.decodeFromString("""{
+            "open": false,
+            "message": "Open Mondays from 20:00",
+            "lastchange": 1605400210.0
+        }""")
+
+        assertEquals(false, parsed.open)
+        assertEquals("Open Mondays from 20:00", parsed.message)
+        assertEquals(1605400210L, parsed.lastchange)
     }
 }
