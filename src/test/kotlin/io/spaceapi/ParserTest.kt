@@ -1,6 +1,7 @@
 package io.spaceapi
 
 import io.spaceapi.types.State
+import io.spaceapi.types.decodeFromString
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
@@ -9,7 +10,7 @@ import kotlin.test.assertEquals
 class ParserTest {
     @Test
     fun testParseV13() {
-        val parsed = fromJson("""
+        val parsed = decodeFromString("""
             {
               "api": "0.13",
               "space": "Coredump",
@@ -58,7 +59,7 @@ class ParserTest {
 
     @Test
     fun testParseV14() {
-        val parsed = fromJson("""
+        val parsed = decodeFromString("""
             {
               "api": "0.13",
               "api_compatibility": ["14"],

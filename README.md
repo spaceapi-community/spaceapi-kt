@@ -20,9 +20,23 @@ This library supports parsing any valid JSON file using the following schema ver
 ## Usage (Kotlin)
 
 ```kotlin
-import io.spaceapi.fromJson
+import io.spaceapi.types.decodeFromString
 
-val parsed = fromJson("{...}")
+// ...
+
+val parsed = decodeFromString("{...}")
+```
+
+
+## Usage (Java)
+
+```java
+import io.spaceapi.types.Status;
+import io.spaceapi.types.StatusKt;
+
+// ...
+
+final Status parsedStatus = StatusKt.decodeFromString("{...}");
 ```
 
 
