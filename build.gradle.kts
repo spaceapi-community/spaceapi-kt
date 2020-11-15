@@ -1,6 +1,9 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import java.util.Date
 
-version = "0.1.0-SNAPSHOT"
+version = "0.1.0"
+description = "(De)serialization of SpaceAPI types for Kotlin and Java."
+group = "spaceapi-community"
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
@@ -11,6 +14,10 @@ plugins {
 
     // Use Kotlin serialization library
     kotlin("plugin.serialization") version "1.4.10"
+
+    // Publishing via Bintray
+    `maven-publish`
+    id("com.jfrog.bintray") version "1.8.5"
 }
 
 repositories {
@@ -36,15 +43,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
 
-tasks.jar {
-    manifest {
-        attributes(mapOf(
-                "Implementation-Title" to project.name,
-                "Implementation-Version" to project.version
-        ))
-    }
-}
-
 tasks.test {
     useJUnit()
     testLogging {
@@ -54,5 +52,78 @@ tasks.test {
         showStackTraces = true
         showStandardStreams = true
         events("passed", "skipped", "failed", "standardOut", "standardError")
+    }
+}
+
+tasks.jar {
+    manifest {
+        attributes(mapOf(
+                "Implementation-Title" to project.name,
+                "Implementation-Version" to project.version
+        ))
+    }
+}
+
+val githubUrl = "https://github.com/spaceapi-community/spaceapi-kt"
+val licenseIdentifier = "GPL-3.0-or-later"
+
+publishing {
+    publications {
+        create<MavenPublication>(project.name) {
+            groupId = project.group.toString()
+            artifactId = project.name
+            version = project.version.toString()
+
+            from(components["java"])
+
+            pom.withXml {
+                asNode().apply {
+                    appendNode("description", githubUrl)
+                    appendNode("name", rootProject.name)
+                    appendNode("url", githubUrl)
+                    appendNode("licenses").appendNode("license").apply {
+                        appendNode("name", licenseIdentifier)
+                        appendNode("url", "https://opensource.org/licenses/GPL-3.0")
+                        appendNode("distribution", "repo")
+                    }
+                    appendNode("developers").appendNode("developer").apply {
+                        appendNode("id", "dbrgn")
+                        appendNode("name", "Danilo Bargen")
+                    }
+                    appendNode("scm").apply {
+                        appendNode("url", githubUrl)
+                    }
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = System.getenv("BINTRAY_USER")
+    key = System.getenv("BINTRAY_KEY")
+    publish = true
+
+    setPublications(project.name)
+
+    pkg.apply {
+        repo = "maven"
+        name = project.name
+        userOrg = "spaceapi-community"
+        githubRepo = "spaceapi-community/spaceapi-kt"
+        vcsUrl = "$githubUrl.git"
+        description = description
+        setLabels("kotlin", "java", "spaceapi", "serialization")
+        setLicenses(licenseIdentifier)
+        desc = description
+        websiteUrl = githubUrl
+        issueTrackerUrl = "$githubUrl/issues"
+        githubReleaseNotesFile = "CHANGELOG.md"
+        version.apply {
+            name = project.version.toString()
+            desc = description
+            released = Date().toString()
+            vcsTag = "v${project.version}"
+        }
     }
 }
