@@ -1,7 +1,8 @@
-@file:UseSerializers(URLSerializer::class)
+@file:UseSerializers(URLSerializer::class, RoundingLongSerializer::class)
 
 package io.spaceapi.types
 
+import io.spaceapi.types.serializers.RoundingLongSerializer
 import io.spaceapi.types.serializers.URLSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
