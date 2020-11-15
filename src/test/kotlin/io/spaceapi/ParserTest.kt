@@ -3,7 +3,6 @@ package io.spaceapi
 import io.spaceapi.types.Status
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class ParserTest {
     @Test fun testParseStatus() {
