@@ -19,21 +19,24 @@ This library supports parsing any valid JSON file using the following schema ver
 
 ## Installing
 
-Add the library to your `build.gradle`:
+### Gradle
+
+First, ensure that the Bintray repository is added to the gradle config:
+
+```groovy
+repositories {
+    maven {
+        url "https://dl.bintray.com/spaceapi-community/maven"
+    }
+}
+```
+
+(We may at a later point in time submit the package to JCenter.)
+
+Then, add the dependency to your `build.gradle`:
 
 ```groovy
 implementation 'spaceapi-community:spaceapi-kt:0.1.0'
-```
-
-...or to your `pom.xml`:
-
-```xml
-<dependency>
-	<groupId>spaceapi-community</groupId>
-	<artifactId>spaceapi-kt</artifactId>
-	<version>0.1.0</version>
-	<type>pom</type>
-</dependency>
 ```
 
 
