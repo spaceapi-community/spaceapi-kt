@@ -1,5 +1,6 @@
 package io.spaceapi
 
+import io.spaceapi.types.Contact
 import io.spaceapi.types.State
 import io.spaceapi.types.decodeFromString
 import kotlinx.serialization.decodeFromString
@@ -117,9 +118,17 @@ class ParserTest {
             "message": "Open Mondays from 20:00",
             "lastchange": 1605400210.0
         }""")
-
         assertEquals(false, parsed.open)
         assertEquals("Open Mondays from 20:00", parsed.message)
         assertEquals(1605400210L, parsed.lastchange)
+    }
+
+    /**
+     * Regression test for #5.
+     */
+    @Test
+    fun parseFacebookNonUrl() {
+        val parsed: Contact = Json.decodeFromString("""{"facebook": "SomeGroupName"}""")
+        assertEquals("SomeGroupName", parsed.facebook)
     }
 }

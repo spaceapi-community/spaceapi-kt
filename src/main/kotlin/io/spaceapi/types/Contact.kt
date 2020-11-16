@@ -33,7 +33,7 @@ data class Contact(
         val sip: URI? = null,
         val irc: String? = null,
         val twitter: String? = null,
-        val facebook: URL? = null,
+        val facebook: String? = null,
         val identica: String? = null,
         val foursquare: String? = null,
         val email: String? = null,
