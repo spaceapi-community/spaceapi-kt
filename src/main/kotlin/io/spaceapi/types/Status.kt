@@ -48,5 +48,5 @@ data class Status(
         val location: Location,
         val state: State? = null,
         val contact: Contact,
-        val issue_report_channels: List<String>,
+        val issue_report_channels: List<String> = emptyList(),
 )
