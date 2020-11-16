@@ -45,10 +45,10 @@ class ParserTest {
         assertEquals(47.2251f, parsed.location.lon)
         assertEquals(8.8339f, parsed.location.lat)
 
-        assertEquals(false, parsed.state.open)
-        assertEquals(null, parsed.state.lastchange)
-        assertEquals("Open Mondays from 20:00", parsed.state.message)
-        assertEquals("Open Mondays from 20:00", parsed.state.message)
+        assertEquals(false, parsed.state!!.open)
+        assertEquals(null, parsed.state!!.lastchange)
+        assertEquals("Open Mondays from 20:00", parsed.state!!.message)
+        assertEquals("Open Mondays from 20:00", parsed.state!!.message)
 
         assertEquals("vorstand@lists.coredump.ch", parsed.contact.email)
         assertEquals("irc://freenode.net/#coredump", parsed.contact.irc)
@@ -95,10 +95,10 @@ class ParserTest {
         assertEquals(47.2251f, parsed.location.lon)
         assertEquals(8.8339f, parsed.location.lat)
 
-        assertEquals(false, parsed.state.open)
-        assertEquals(null, parsed.state.lastchange)
-        assertEquals("Open Mondays from 20:00", parsed.state.message)
-        assertEquals("Open Mondays from 20:00", parsed.state.message)
+        assertEquals(false, parsed.state!!.open)
+        assertEquals(null, parsed.state!!.lastchange)
+        assertEquals("Open Mondays from 20:00", parsed.state!!.message)
+        assertEquals("Open Mondays from 20:00", parsed.state!!.message)
 
         assertEquals("vorstand@lists.coredump.ch", parsed.contact.email)
         assertEquals("irc://freenode.net/#coredump", parsed.contact.irc)
