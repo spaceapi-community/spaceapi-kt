@@ -21,9 +21,9 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew assemble
       - name: Test with Gradle
-        run: ./gradlew build
+        run: ./gradlew test
 
   validation:
     name: "Validation"
