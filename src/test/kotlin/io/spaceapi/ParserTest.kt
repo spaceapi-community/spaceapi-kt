@@ -5,6 +5,7 @@ import io.spaceapi.types.State
 import io.spaceapi.types.decodeFromString
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import java.net.URL
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -106,6 +107,31 @@ class ParserTest {
         assertEquals(null, parsed.contact.facebook)
 
         assertEquals(listOf("email", "twitter"), parsed.issue_report_channels)
+    }
+
+    @Test
+    fun testParseV14Minimal() {
+        val parsed = decodeFromString("""
+            {
+              "api_compatibility": ["14"],
+              "space": "Coredump",
+              "logo": "https://www.coredump.ch/wp-content/uploads/2016/11/logo.png",
+              "url": "https://www.coredump.ch/",
+              "location": {"lon": 47.2251, "lat": 8.8339},
+              "contact": {}
+            }
+        """)
+
+        assertEquals(setOf("14"), parsed.api_compatibility)
+        assertEquals("Coredump", parsed.space)
+        assertEquals("https://www.coredump.ch/wp-content/uploads/2016/11/logo.png", parsed.logo)
+        assertEquals(URL("https://www.coredump.ch/"), parsed.url)
+        assertEquals(null, parsed.location.address)
+        assertEquals(47.2251f, parsed.location.lon)
+        assertEquals(8.8339f, parsed.location.lat)
+
+        assertEquals(emptyList(), parsed.issue_report_channels)
+        assertEquals(null, parsed.state)
     }
 
     /**
