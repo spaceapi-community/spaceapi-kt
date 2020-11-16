@@ -46,7 +46,7 @@ data class Status(
         val logo: String,
         val url: URL,
         val location: Location,
-        val state: State,
+        val state: State? = null,
         val contact: Contact,
         val issue_report_channels: List<String>,
 )
