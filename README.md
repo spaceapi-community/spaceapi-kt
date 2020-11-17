@@ -45,22 +45,22 @@ implementation 'spaceapi-community:spaceapi-kt:0.1.0'
 ### Kotlin
 
 ```kotlin
-import io.spaceapi.types.decodeFromString
+import io.spaceapi.parseString
 
 // ...
 
-val parsed = decodeFromString("{...}")
+val parsed = parseString("{...}")
 ```
 
 ### Java
 
 ```java
+import io.spaceapi.SpaceApiParser;
 import io.spaceapi.types.Status;
-import io.spaceapi.types.StatusKt;
 
 // ...
 
-final Status parsedStatus = StatusKt.decodeFromString("{...}");
+final Status parsedStatus = SpaceApiParser.parseString("{...}");
 ```
 
 

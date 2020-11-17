@@ -2,17 +2,18 @@ package io.spaceapi
 
 import io.spaceapi.types.Contact
 import io.spaceapi.types.State
-import io.spaceapi.types.decodeFromString
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
 import java.net.URL
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ParserTest {
+class ParserTestKotlin {
     @Test
-    fun testParseV13() {
-        val parsed = decodeFromString("""
+    fun testParseV13FromString() {
+        val parsed = parseString("""
             {
               "api": "0.13",
               "space": "Coredump",
@@ -60,8 +61,8 @@ class ParserTest {
     }
 
     @Test
-    fun testParseV14() {
-        val parsed = decodeFromString("""
+    fun testParseV14FromString() {
+        val parsed = parseString("""
             {
               "api": "0.13",
               "api_compatibility": ["14"],
@@ -109,18 +110,18 @@ class ParserTest {
         assertEquals(listOf("email", "twitter"), parsed.issue_report_channels)
     }
 
+    val minimalV14Data = """{
+        "api_compatibility": ["14"],
+        "space": "Coredump",
+        "logo": "https://www.coredump.ch/wp-content/uploads/2016/11/logo.png",
+        "url": "https://www.coredump.ch/",
+        "location": {"lon": 47.2251, "lat": 8.8339},
+        "contact": {}
+    }""";
+
     @Test
     fun testParseV14Minimal() {
-        val parsed = decodeFromString("""
-            {
-              "api_compatibility": ["14"],
-              "space": "Coredump",
-              "logo": "https://www.coredump.ch/wp-content/uploads/2016/11/logo.png",
-              "url": "https://www.coredump.ch/",
-              "location": {"lon": 47.2251, "lat": 8.8339},
-              "contact": {}
-            }
-        """)
+        val parsed = parseString(minimalV14Data)
 
         assertEquals(setOf("14"), parsed.api_compatibility)
         assertEquals("Coredump", parsed.space)
@@ -132,6 +133,17 @@ class ParserTest {
 
         assertEquals(emptyList(), parsed.issue_report_channels)
         assertEquals(null, parsed.state)
+    }
+
+    /**
+     * Test decoding from a JsonElement.
+     */
+    @Test
+    fun testParseV14FromJsonElement() {
+        val map: HashMap<String, JsonElement> = Json.decodeFromString(minimalV14Data)
+        val parsed = fromJsonElement(JsonObject(map))
+        assertEquals("Coredump", parsed.space)
+        assertEquals(setOf("14"), parsed.api_compatibility)
     }
 
     /**

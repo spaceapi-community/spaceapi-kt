@@ -16,24 +16,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:UseSerializers(URLSerializer::class)
+@file:JvmName("SpaceApiParser")
 
-package io.spaceapi.types
+package io.spaceapi
 
-import io.spaceapi.types.serializers.URLSerializer
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
-import java.net.URL
+import io.spaceapi.types.Status
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.decodeFromJsonElement
 
-@Serializable
-data class Status(
-        val space: String,
-        val api: String? = null,
-        val api_compatibility: Set<String> = emptySet(),
-        val logo: String,
-        val url: URL,
-        val location: Location,
-        val state: State? = null,
-        val contact: Contact,
-        val issue_report_channels: List<String> = emptyList(),
-)
+// This is the main entry point into the library.
+
+val format = Json { ignoreUnknownKeys = true }
+
+/**
+ * Parse a JSON string, return a `Status` instance.
+ */
+fun parseString(json: String): Status {
+    return format.decodeFromString(json)
+}
+
+/**
+ * Parse a `JsonElement`, return a `Status` instance.
+ */
+fun fromJsonElement(json: JsonElement): Status {
+    return format.decodeFromJsonElement(json)
+}
