@@ -21,6 +21,7 @@
 package io.spaceapi
 
 import io.spaceapi.types.Status
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
@@ -30,10 +31,35 @@ import kotlinx.serialization.json.decodeFromJsonElement
 
 val format = Json { ignoreUnknownKeys = true }
 
+@Serializable
+private data class StatusApi(
+    val api: String? = null,
+)
+
+/**
+ * An exception that is thrown if the input could not be parsed.
+ */
+class ParseError(message: String) : Exception(message)
+
 /**
  * Parse a JSON string, return a `Status` instance.
  */
+@Throws(ParseError::class)
 fun parseString(json: String): Status {
+    // Sanity checks
+    if (json.isBlank()) {
+        throw ParseError("Input JSON is blank or empty")
+    }
+    if (!json.trimStart().startsWith('{')) {
+        throw ParseError("Input JSON does not start with '{'. Is it really JSON?")
+    }
+
+    // Parse JSON, get "api" field (and nothing else) for API version checks
+    val parsedApiField: StatusApi = format.decodeFromString(json)
+    if (parsedApiField.api != null && parsedApiField.api != "0.13") {
+        throw ParseError("Unsupported API version: ${parsedApiField.api}")
+    }
+
     return format.decodeFromString(json)
 }
 

@@ -6,6 +6,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
+import org.junit.Assert
 import java.net.URL
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -168,5 +169,34 @@ class ParserTestKotlin {
     fun parseFacebookNonUrl() {
         val parsed: Contact = Json.decodeFromString("""{"facebook": "SomeGroupName"}""")
         assertEquals("SomeGroupName", parsed.facebook)
+    }
+
+    /**
+     * Helper function.
+     */
+    fun assertThrowsParseError(input: String, expectedMessage: String) {
+        try {
+            parseString(input)
+            Assert.fail("Did not throw ParseError")
+        } catch (e: ParseError) {
+            assertEquals(expectedMessage, e.message)
+        }
+    }
+
+    @Test
+    fun parseInvalidBlankOrEmpty() {
+        assertThrowsParseError("", "Input JSON is blank or empty")
+        assertThrowsParseError("    ", "Input JSON is blank or empty")
+    }
+
+    @Test
+    fun parseInvalidNotJson() {
+        assertThrowsParseError("/*{not json}*/", "Input JSON does not start with '{'. Is it really JSON?")
+    }
+
+    @Test
+    fun parseInvalidApiVersion() {
+        assertThrowsParseError("""{"api": "0.12", "space": "Foobar"}""", "Unsupported API version: 0.12")
+        assertThrowsParseError("""{"api": "0.11", "space": "Foobar"}""", "Unsupported API version: 0.11")
     }
 }
