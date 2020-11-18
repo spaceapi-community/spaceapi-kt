@@ -42,7 +42,7 @@ data class Status(
     val state: State? = null,
     val events: Array<Event> = emptyArray(),
     val contact: Contact,
-    val issue_report_channels: Array<String> = emptyArray(),
+    val issue_report_channels: Set<String> = emptySet(),
     // TODO sensors
     val feeds: Feeds? = null,
     val cache: Cache? = null,
