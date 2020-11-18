@@ -25,15 +25,27 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import java.net.URL
 
+// Note: In general, when dealing with optional collections, those use an empty collection
+// as the default value instead of null.
+
 @Serializable
 data class Status(
-        val space: String,
-        val api: String? = null,
-        val api_compatibility: Set<String> = emptySet(),
-        val logo: String,
-        val url: URL,
-        val location: Location,
-        val state: State? = null,
-        val contact: Contact,
-        val issue_report_channels: List<String> = emptyList(),
+    val api: String? = null,
+    val api_compatibility: Set<String> = emptySet(),
+    val space: String,
+    val logo: String,
+    val url: URL,
+    val location: Location,
+    val spacefed: SpaceFed? = null,
+    val cam: Array<String> = emptyArray(),
+    val stream: Stream? = null,
+    val state: State? = null,
+    val events: Array<Event> = emptyArray(),
+    val contact: Contact,
+    val issue_report_channels: Array<String> = emptyArray(),
+    // TODO sensors
+    val feeds: Feeds? = null,
+    val cache: Cache? = null,
+    val projects: Array<String> = emptyArray(),
+    val radio_show: Array<RadioShow> = emptyArray(),
 )
