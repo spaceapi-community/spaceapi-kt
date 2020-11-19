@@ -58,7 +58,7 @@ class ParserTestKotlin {
         assertEquals("@coredump_ch", parsed.contact.twitter)
         assertEquals(null, parsed.contact.facebook)
 
-        assertEquals(listOf("email", "twitter"), parsed.issue_report_channels)
+        assertEquals(setOf("email", "twitter"), parsed.issue_report_channels)
     }
 
     @Test
@@ -108,7 +108,7 @@ class ParserTestKotlin {
         assertEquals("@coredump_ch", parsed.contact.twitter)
         assertEquals(null, parsed.contact.facebook)
 
-        assertEquals(listOf("email", "twitter"), parsed.issue_report_channels)
+        assertEquals(setOf("email", "twitter"), parsed.issue_report_channels)
     }
 
     val minimalV14Data = """{
@@ -132,7 +132,7 @@ class ParserTestKotlin {
         assertEquals(47.2251f, parsed.location.lon)
         assertEquals(8.8339f, parsed.location.lat)
 
-        assertEquals(emptyList(), parsed.issue_report_channels)
+        assertEquals(emptySet(), parsed.issue_report_channels)
         assertEquals(null, parsed.state)
     }
 

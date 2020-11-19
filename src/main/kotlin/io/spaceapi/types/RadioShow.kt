@@ -16,38 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:UseSerializers(URISerializer::class, URLSerializer::class)
+@file:UseSerializers(URLSerializer::class)
 
 package io.spaceapi.types
 
-import io.spaceapi.types.serializers.URISerializer
 import io.spaceapi.types.serializers.URLSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import java.net.URI
 import java.net.URL
 
 @Serializable
-data class Contact(
-        val phone: String? = null,
-        val sip: URI? = null,
-        val keymasters: Array<Keymaster> = emptyArray(),
-        val irc: String? = null,
-        val twitter: String? = null,
-        val facebook: String? = null,
-        // Note: identica and google plus not supported, they're dead anyways
-        val foursquare: String? = null,
-        val email: String? = null,
-        val ml: String? = null,
-        val jabber: String? = null,
-        val issue_mail: String? = null,
-)
-
-@Serializable
-data class Keymaster(
-    val name: String? = null,
-    val irc_nick: String? = null,
-    val phone: String? = null,
-    val email: String? = null,
-    val twitter: String? = null,
+data class RadioShow(
+    val name: String,
+    val url: URL,
+    val type: String,
+    val start: String,
+    val end: String,
 )
