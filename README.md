@@ -5,8 +5,9 @@ Java.
 
 The parser is quite lenient, so it will ignore unknown fields, should be able
 to deal with multiple versions and will sometimes even parse invalid endpoint
-JSON. (If you need strict validation, use a JSON schema based validator
-instead!)
+JSON. Additionally, in most cases, values with a fixed set of allowed values is
+parsed as String, not as enum. (If you need strict validation, use a JSON
+schema based validator instead!)
 
 
 ## API Version Support
