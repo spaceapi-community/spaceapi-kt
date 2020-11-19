@@ -68,10 +68,10 @@ data class Barometer(
 
 @Serializable
 data class Radiation(
-    val alpha: Array<RadiationSensor>,
-    val beta: Array<RadiationSensor>,
-    val gamma: Array<RadiationSensor>,
-    val beta_gamma: Array<RadiationSensor>,
+    val alpha: Array<RadiationSensor> = emptyArray(),
+    val beta: Array<RadiationSensor> = emptyArray(),
+    val gamma: Array<RadiationSensor> = emptyArray(),
+    val beta_gamma: Array<RadiationSensor> = emptyArray(),
 )
 
 @Serializable
