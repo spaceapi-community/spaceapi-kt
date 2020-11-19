@@ -80,7 +80,7 @@ data class RadiationSensor(
     val unit: String,
     val dead_time: Float? = null,
     val conversion_factor: Float? = null,
-    val location: String,
+    val location: String? = null,
     val name: String? = null,
     val description: String? = null,
 )
@@ -98,7 +98,7 @@ data class Humidity(
 data class BeverageSupply(
     val value: Float,
     val unit: String,
-    val location: String,
+    val location: String? = null,
     val name: String? = null,
     val description: String? = null,
 )
