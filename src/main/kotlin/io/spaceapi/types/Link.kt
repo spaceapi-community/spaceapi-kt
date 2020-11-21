@@ -16,18 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:UseSerializers(RoundingLongSerializer::class)
+@file:UseSerializers(URLSerializer::class)
 
 package io.spaceapi.types
 
-import io.spaceapi.types.serializers.RoundingLongSerializer
+import io.spaceapi.types.serializers.URLSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import java.net.URL
 
 @Serializable
-data class Event(
+data class Link(
     var name: String,
-    var type: String,
-    var timestamp: Long,
-    var extra: String? = null,
+    var description: String? = null,
+    var url: URL,
 )

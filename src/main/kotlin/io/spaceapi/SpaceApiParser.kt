@@ -60,7 +60,15 @@ fun parseString(json: String): Status {
         throw ParseError("Unsupported API version: ${parsedApiField.api}")
     }
 
-    return format.decodeFromString(json)
+    // Deserialize
+    val decoded: Status = format.decodeFromString(json)
+
+    // Map renamed fields to new name
+    if (decoded.contact.jabber != null && decoded.contact.xmpp == null) {
+        decoded.contact.xmpp = decoded.contact.jabber
+    }
+
+    return decoded
 }
 
 /**

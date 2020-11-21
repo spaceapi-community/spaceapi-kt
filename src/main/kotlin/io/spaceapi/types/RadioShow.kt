@@ -27,9 +27,9 @@ import java.net.URL
 
 @Serializable
 data class RadioShow(
-    val name: String,
-    val url: URL,
-    val type: String,
-    val start: String,
-    val end: String,
+    var name: String,
+    var url: URL,
+    var type: String,
+    var start: String,
+    var end: String,
 )

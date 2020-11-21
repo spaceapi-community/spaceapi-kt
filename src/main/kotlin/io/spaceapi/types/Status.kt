@@ -30,22 +30,28 @@ import java.net.URL
 
 @Serializable
 data class Status(
-    val api: String? = null,
-    val api_compatibility: Set<String> = emptySet(),
-    val space: String,
-    val logo: String,
-    val url: URL,
-    val location: Location,
-    val spacefed: SpaceFed? = null,
-    val cam: Array<String> = emptyArray(),
-    val stream: Stream? = null,
-    val state: State? = null,
-    val events: Array<Event> = emptyArray(),
-    val contact: Contact,
-    val issue_report_channels: Set<String> = emptySet(),
-    val sensors: Sensors? = null,
-    val feeds: Feeds? = null,
-    val cache: Cache? = null,
-    val projects: Array<String> = emptyArray(),
-    val radio_show: Array<RadioShow> = emptyArray(),
+    var api: String? = null,
+    var api_compatibility: Set<String> = emptySet(),
+    var space: String,
+    var logo: String,
+    var url: URL,
+    var location: Location,
+    var spacefed: SpaceFed? = null,
+    var cam: Array<String> = emptyArray(),
+    @Deprecated("The 'stream' field was removed in API v14")
+    var stream: Stream? = null,
+    var state: State? = null,
+    var events: Array<Event> = emptyArray(),
+    var contact: Contact,
+    @Deprecated("The 'issue_report_channels' field was removed in API v14")
+    var issue_report_channels: Set<String> = emptySet(),
+    var sensors: Sensors? = null,
+    var feeds: Feeds? = null,
+    @Deprecated("The 'cache' field was removed in API v14")
+    var cache: Cache? = null,
+    var projects: Array<String> = emptyArray(),
+    var links: Array<Link> = emptyArray(),
+    var membership_plans: Array<MembershipPlan> = emptyArray(),
+    @Deprecated("The 'radio_show' field was removed in API v14")
+    var radio_show: Array<RadioShow> = emptyArray(),
 )

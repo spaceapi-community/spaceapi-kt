@@ -16,18 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:UseSerializers(RoundingLongSerializer::class)
-
 package io.spaceapi.types
 
-import io.spaceapi.types.serializers.RoundingLongSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
 
 @Serializable
-data class Event(
+data class MembershipPlan(
     var name: String,
-    var type: String,
-    var timestamp: Long,
-    var extra: String? = null,
+    var value: Float,
+    var currency: String,
+    var billing_interval: String,
+    var description: String? = null,
 )

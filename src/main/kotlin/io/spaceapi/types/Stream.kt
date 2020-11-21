@@ -22,7 +22,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Stream(
-        val m4: String? = null,
-        val mjpeg: String? = null,
-        val ustream: String? = null,
+    var m4: String? = null,
+    var mjpeg: String? = null,
+    var ustream: String? = null,
 )

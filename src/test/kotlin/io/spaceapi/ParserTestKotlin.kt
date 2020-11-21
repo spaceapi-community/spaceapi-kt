@@ -199,4 +199,32 @@ class ParserTestKotlin {
         assertThrowsParseError("""{"api": "0.12", "space": "Foobar"}""", "Unsupported API version: 0.12")
         assertThrowsParseError("""{"api": "0.11", "space": "Foobar"}""", "Unsupported API version: 0.11")
     }
+
+    /**
+     * The `jabber` field was renamed to `xmpp` in v14. Ensure that it's parsed and remapped correctly.
+     */
+    @Test
+    fun parseJabberXmppField() {
+        val jsonBase = """{
+            "api": "0.13",
+            "api_compatibility": ["14"],
+            "space": "Coredump",
+            "logo": "https://www.coredump.ch/wp-content/uploads/2016/11/logo.png",
+            "url": "https://www.coredump.ch/",
+            "location": {"lon": 47.2251, "lat": 8.8339},
+            "contact":
+        """
+
+        // Only jabber specified
+        val parsed1 = parseString("$jsonBase{\"jabber\": \"foo@bar.com\"}}")
+        assertEquals("foo@bar.com", parsed1.contact.xmpp)
+
+        // Only xmpp specified
+        val parsed2 = parseString("$jsonBase{\"xmpp\": \"foo@bar.com\"}}")
+        assertEquals("foo@bar.com", parsed2.contact.xmpp)
+
+        // Both jabber and xmpp specified, xmpp wins
+        val parsed3 = parseString("$jsonBase{\"jabber\": \"old@bar.com\", \"xmpp\": \"foo@bar.com\"}}")
+        assertEquals("foo@bar.com", parsed3.contact.xmpp)
+    }
 }
