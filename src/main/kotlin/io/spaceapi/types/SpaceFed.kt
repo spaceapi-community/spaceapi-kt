@@ -22,7 +22,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SpaceFed(
-        val spacenet: Boolean,
-        val spacesaml: Boolean,
-        val spacephone: Boolean,
+    var spacenet: Boolean,
+    var spacesaml: Boolean,
+    var spacephone: Boolean,
 )

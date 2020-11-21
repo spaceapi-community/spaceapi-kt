@@ -22,7 +22,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Location(
-        val address: String? = null,
-        val lat: Float,
-        val lon: Float,
+    var address: String? = null,
+    var lat: Float,
+    var lon: Float,
 )

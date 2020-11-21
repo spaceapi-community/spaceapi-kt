@@ -22,5 +22,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Cache(
-        val schedule: String,
+    var schedule: String,
 )

@@ -26,8 +26,8 @@ import kotlinx.serialization.UseSerializers
 
 @Serializable
 data class Event(
-        val name: String,
-        val type: String,
-        val timestamp: Long,
-        val extra: String? = null,
+    var name: String,
+    var type: String,
+    var timestamp: Long,
+    var extra: String? = null,
 )

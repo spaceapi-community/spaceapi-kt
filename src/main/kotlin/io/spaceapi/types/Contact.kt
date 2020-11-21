@@ -29,25 +29,25 @@ import java.net.URL
 
 @Serializable
 data class Contact(
-        val phone: String? = null,
-        val sip: URI? = null,
-        val keymasters: Array<Keymaster> = emptyArray(),
-        val irc: String? = null,
-        val twitter: String? = null,
-        val facebook: String? = null,
-        // Note: identica and google plus not supported, they're dead anyways
-        val foursquare: String? = null,
-        val email: String? = null,
-        val ml: String? = null,
-        val jabber: String? = null,
-        val issue_mail: String? = null,
+    var phone: String? = null,
+    var sip: URI? = null,
+    var keymasters: Array<Keymaster> = emptyArray(),
+    var irc: String? = null,
+    var twitter: String? = null,
+    var facebook: String? = null,
+    // Note: identica and google plus not supported, they're dead anyways
+    var foursquare: String? = null,
+    var email: String? = null,
+    var ml: String? = null,
+    var jabber: String? = null,
+    var issue_mail: String? = null,
 )
 
 @Serializable
 data class Keymaster(
-    val name: String? = null,
-    val irc_nick: String? = null,
-    val phone: String? = null,
-    val email: String? = null,
-    val twitter: String? = null,
+    var name: String? = null,
+    var irc_nick: String? = null,
+    var phone: String? = null,
+    var email: String? = null,
+    var twitter: String? = null,
 )

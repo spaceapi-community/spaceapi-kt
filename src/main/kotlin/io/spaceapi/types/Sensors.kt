@@ -26,164 +26,164 @@ import kotlinx.serialization.UseSerializers
 
 @Serializable
 data class Sensors(
-    val temperature: Array<Temperature> = emptyArray(),
-    val door_locked: Array<DoorLocked> = emptyArray(),
-    val barometer: Array<Barometer> = emptyArray(),
-    val radiation: Radiation? = null,
-    val humidity: Array<Humidity> = emptyArray(),
-    val beverage_supply: Array<BeverageSupply> = emptyArray(),
-    val power_consumption: Array<PowerConsumption> = emptyArray(),
-    val wind: Array<Wind> = emptyArray(),
-    val network_connections: Array<NetworkConnection> = emptyArray(),
-    val account_balance: Array<AccountBalance> = emptyArray(),
-    val total_member_count: Array<MemberCount> = emptyArray(),
-    val people_now_present: Array<PeoplePresent> = emptyArray(),
+    var temperature: Array<Temperature> = emptyArray(),
+    var door_locked: Array<DoorLocked> = emptyArray(),
+    var barometer: Array<Barometer> = emptyArray(),
+    var radiation: Radiation? = null,
+    var humidity: Array<Humidity> = emptyArray(),
+    var beverage_supply: Array<BeverageSupply> = emptyArray(),
+    var power_consumption: Array<PowerConsumption> = emptyArray(),
+    var wind: Array<Wind> = emptyArray(),
+    var network_connections: Array<NetworkConnection> = emptyArray(),
+    var account_balance: Array<AccountBalance> = emptyArray(),
+    var total_member_count: Array<MemberCount> = emptyArray(),
+    var people_now_present: Array<PeoplePresent> = emptyArray(),
 )
 
 @Serializable
 data class Temperature(
-    val value: Float,
-    val unit: String,
-    val location: String,
-    val name: String? = null,
-    val description: String? = null,
+    var value: Float,
+    var unit: String,
+    var location: String,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class DoorLocked(
-    val value: Boolean,
-    val location: String,
-    val name: String? = null,
-    val description: String? = null,
+    var value: Boolean,
+    var location: String,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class Barometer(
-    val value: Float,
-    val unit: String,
-    val location: String,
-    val name: String? = null,
-    val description: String? = null,
+    var value: Float,
+    var unit: String,
+    var location: String,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class Radiation(
-    val alpha: Array<RadiationSensor> = emptyArray(),
-    val beta: Array<RadiationSensor> = emptyArray(),
-    val gamma: Array<RadiationSensor> = emptyArray(),
-    val beta_gamma: Array<RadiationSensor> = emptyArray(),
+    var alpha: Array<RadiationSensor> = emptyArray(),
+    var beta: Array<RadiationSensor> = emptyArray(),
+    var gamma: Array<RadiationSensor> = emptyArray(),
+    var beta_gamma: Array<RadiationSensor> = emptyArray(),
 )
 
 @Serializable
 data class RadiationSensor(
-    val value: Float,
-    val unit: String,
-    val dead_time: Float? = null,
-    val conversion_factor: Float? = null,
-    val location: String? = null,
-    val name: String? = null,
-    val description: String? = null,
+    var value: Float,
+    var unit: String,
+    var dead_time: Float? = null,
+    var conversion_factor: Float? = null,
+    var location: String? = null,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class Humidity(
-    val value: Float,
-    val unit: String,
-    val location: String,
-    val name: String? = null,
-    val description: String? = null,
+    var value: Float,
+    var unit: String,
+    var location: String,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class BeverageSupply(
-    val value: Float,
-    val unit: String,
-    val location: String? = null,
-    val name: String? = null,
-    val description: String? = null,
+    var value: Float,
+    var unit: String,
+    var location: String? = null,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class PowerConsumption(
-    val value: Float,
-    val unit: String,
-    val location: String,
-    val name: String? = null,
-    val description: String? = null,
+    var value: Float,
+    var unit: String,
+    var location: String,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class Wind(
-    val properties: WindProperties,
-    val location: String,
-    val name: String? = null,
-    val description: String? = null,
+    var properties: WindProperties,
+    var location: String,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class WindProperties(
-    val speed: WindSpeed,
-    val gust: WindSpeed,
-    val direction: WindDirection,
-    val elevation: Elevation,
+    var speed: WindSpeed,
+    var gust: WindSpeed,
+    var direction: WindDirection,
+    var elevation: Elevation,
 )
 
 @Serializable
 data class WindSpeed(
-    val value: Float,
-    val unit: String,
+    var value: Float,
+    var unit: String,
 )
 
 @Serializable
 data class WindDirection(
-    val value: Float,
-    val unit: String,
+    var value: Float,
+    var unit: String,
 )
 
 @Serializable
 data class Elevation(
-    val value: Float,
-    val unit: String,
+    var value: Float,
+    var unit: String,
 )
 
 @Serializable
 data class NetworkConnection(
-    val type: String? = null,
-    val value: Long,
-    val location: String? = null,
-    val machines: Array<Machine> = emptyArray(),
-    val name: String? = null,
-    val description: String? = null,
+    var type: String? = null,
+    var value: Long,
+    var location: String? = null,
+    var machines: Array<Machine> = emptyArray(),
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class Machine(
-    val name: String? = null,
-    val mac: String,
+    var name: String? = null,
+    var mac: String,
 )
 
 @Serializable
 data class AccountBalance(
-    val value: Float,
-    val unit: String,
-    val location: String? = null,
-    val name: String? = null,
-    val description: String? = null,
+    var value: Float,
+    var unit: String,
+    var location: String? = null,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class MemberCount(
-    val value: Long,
-    val location: String? = null,
-    val name: String? = null,
-    val description: String? = null,
+    var value: Long,
+    var location: String? = null,
+    var name: String? = null,
+    var description: String? = null,
 )
 
 @Serializable
 data class PeoplePresent(
-    val value: Long,
-    val location: String? = null,
-    val name: String? = null,
-    val names: Array<String> = emptyArray(),
-    val description: String? = null,
+    var value: Long,
+    var location: String? = null,
+    var name: String? = null,
+    var names: Array<String> = emptyArray(),
+    var description: String? = null,
 )

@@ -28,15 +28,15 @@ import java.net.URL
 
 @Serializable
 data class State(
-        val open: Boolean?,
-        val lastchange: Long? = null, // TODO: Make this a date?
-        val trigger_person: String? = null,
-        val message: String? = null,
-        val icon: Icon? = null,
+    var open: Boolean?,
+    var lastchange: Long? = null, // TODO: Make this a date?
+    var trigger_person: String? = null,
+    var message: String? = null,
+    var icon: Icon? = null,
 )
 
 @Serializable
 data class Icon(
-        val open: URL,
-        val closed: URL,
+    var open: URL,
+    var closed: URL,
 )

@@ -27,14 +27,14 @@ import java.net.URL
 
 @Serializable
 data class Feeds(
-        val blog: Feed? = null,
-        val wiki: Feed? = null,
-        val calendar: Feed? = null,
-        val flickr: Feed? = null,
+    var blog: Feed? = null,
+    var wiki: Feed? = null,
+    var calendar: Feed? = null,
+    var flickr: Feed? = null,
 )
 
 @Serializable
 data class Feed(
-    val type: String? = null,
-    val url: URL,
+    var type: String? = null,
+    var url: URL,
 )
