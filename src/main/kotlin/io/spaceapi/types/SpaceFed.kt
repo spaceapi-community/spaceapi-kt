@@ -24,5 +24,6 @@ import kotlinx.serialization.Serializable
 data class SpaceFed(
     var spacenet: Boolean,
     var spacesaml: Boolean,
+    @Deprecated("The 'spacephone' field was removed in API v14")
     var spacephone: Boolean,
 )

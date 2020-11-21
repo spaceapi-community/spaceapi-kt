@@ -25,4 +25,5 @@ data class Location(
     var address: String? = null,
     var lat: Float,
     var lon: Float,
+    var timezone: String? = null,
 )

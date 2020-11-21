@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class ParserTestJava {
-    private static String minimalV14Data = "{\n" +
+    private static final String minimalV14Data = "{\n" +
         "\"api_compatibility\": [\"14\"],\n" +
         "\"space\": \"Coredump\",\n" +
         "\"logo\": \"https://www.coredump.ch/wp-content/uploads/2016/11/logo.png\",\n" +
@@ -18,7 +18,7 @@ public class ParserTestJava {
      * This test is here to test the Java API generated from Kotlin code.
      */
     @Test
-    public void testApi() {
+    public void testApi() throws ParseError {
         final Status statusFromString = SpaceApiParser.parseString(minimalV14Data);
         Assert.assertEquals("Coredump", statusFromString.getSpace());
     }

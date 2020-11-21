@@ -38,14 +38,20 @@ data class Status(
     var location: Location,
     var spacefed: SpaceFed? = null,
     var cam: Array<String> = emptyArray(),
+    @Deprecated("The 'stream' field was removed in API v14")
     var stream: Stream? = null,
     var state: State? = null,
     var events: Array<Event> = emptyArray(),
     var contact: Contact,
+    @Deprecated("The 'issue_report_channels' field was removed in API v14")
     var issue_report_channels: Set<String> = emptySet(),
     var sensors: Sensors? = null,
     var feeds: Feeds? = null,
+    @Deprecated("The 'cache' field was removed in API v14")
     var cache: Cache? = null,
     var projects: Array<String> = emptyArray(),
+    var links: Array<Link> = emptyArray(),
+    var membership_plans: Array<MembershipPlan> = emptyArray(),
+    @Deprecated("The 'radio_show' field was removed in API v14")
     var radio_show: Array<RadioShow> = emptyArray(),
 )

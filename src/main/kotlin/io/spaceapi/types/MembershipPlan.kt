@@ -16,27 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:UseSerializers(URLSerializer::class, RoundingLongSerializer::class)
-
 package io.spaceapi.types
 
-import io.spaceapi.types.serializers.RoundingLongSerializer
-import io.spaceapi.types.serializers.URLSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
-import java.net.URL
 
 @Serializable
-data class State(
-    var open: Boolean? = null,
-    var lastchange: Long? = null, // TODO: Make this a date?
-    var trigger_person: String? = null,
-    var message: String? = null,
-    var icon: Icon? = null,
-)
-
-@Serializable
-data class Icon(
-    var open: URL,
-    var closed: URL,
+data class MembershipPlan(
+    var name: String,
+    var value: Float,
+    var currency: String,
+    var billing_interval: String,
+    var description: String? = null,
 )
