@@ -29,7 +29,7 @@ import java.net.URL
 @Serializable
 data class State(
     var open: Boolean? = null,
-    var lastchange: Long? = null, // TODO: Make this a date?
+    var lastchange: Long? = null,
     var trigger_person: String? = null,
     var message: String? = null,
     var icon: Icon? = null,
