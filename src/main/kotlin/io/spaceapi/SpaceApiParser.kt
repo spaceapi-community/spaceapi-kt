@@ -39,7 +39,10 @@ private data class StatusApi(
 /**
  * An exception that is thrown if the input could not be parsed.
  */
-class ParseError(message: String) : Exception(message)
+class ParseError : Exception {
+    constructor(message: String) : super(message)
+    constructor(message: String, cause: Throwable) : super(message, cause)
+}
 
 /**
  * Parse a JSON string, return a `Status` instance.
@@ -61,7 +64,12 @@ fun parseString(json: String): Status {
     }
 
     // Deserialize
-    val decoded: Status = format.decodeFromString(json)
+    val decoded: Status
+    try {
+        decoded = format.decodeFromString(json)
+    } catch (e: Exception) {
+        throw ParseError("Parsing failed: ${e.message}", e)
+    }
 
     // Map renamed fields to new name
     if (decoded.contact.jabber != null && decoded.contact.xmpp == null) {
