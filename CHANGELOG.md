@@ -11,6 +11,10 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
+### v0.2.1 (2020-11-23)
+
+- [changed] All fields are now marked as @JvmField for direct access from Java
+
 ### v0.2.0 (2020-11-22)
 
 - [added] Support for all v0.13 fields (#16)
