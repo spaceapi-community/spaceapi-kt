@@ -227,4 +227,20 @@ class ParserTestKotlin {
         val parsed3 = parseString("$jsonBase{\"jabber\": \"old@bar.com\", \"xmpp\": \"foo@bar.com\"}}")
         assertEquals("foo@bar.com", parsed3.contact.xmpp)
     }
+
+    /**
+     * Parse errors should be wrapped in the `ParseError` class.
+     */
+    @Test
+    fun parseErrorWrapping() {
+        try {
+            parseString("""{"api": "0.13"}""")
+        } catch (e: ParseError) {
+            /* Success! */
+            Assert.assertTrue(e.cause != null)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Assert.fail("Unwrapped exception thrown!")
+        }
+    }
 }
