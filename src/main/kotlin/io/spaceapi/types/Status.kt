@@ -30,28 +30,48 @@ import java.net.URL
 
 @Serializable
 data class Status(
+    @JvmField
     var api: String? = null,
+    @JvmField
     var api_compatibility: Set<String> = emptySet(),
+    @JvmField
     var space: String,
+    @JvmField
     var logo: String,
+    @JvmField
     var url: URL,
+    @JvmField
     var location: Location,
+    @JvmField
     var spacefed: SpaceFed? = null,
+    @JvmField
     var cam: Array<String> = emptyArray(),
     @Deprecated("The 'stream' field was removed in API v14")
+    @JvmField
     var stream: Stream? = null,
+    @JvmField
     var state: State? = null,
+    @JvmField
     var events: Array<Event> = emptyArray(),
+    @JvmField
     var contact: Contact,
     @Deprecated("The 'issue_report_channels' field was removed in API v14")
+    @JvmField
     var issue_report_channels: Set<String> = emptySet(),
+    @JvmField
     var sensors: Sensors? = null,
+    @JvmField
     var feeds: Feeds? = null,
     @Deprecated("The 'cache' field was removed in API v14")
+    @JvmField
     var cache: Cache? = null,
+    @JvmField
     var projects: Array<String> = emptyArray(),
+    @JvmField
     var links: Array<Link> = emptyArray(),
+    @JvmField
     var membership_plans: Array<MembershipPlan> = emptyArray(),
     @Deprecated("The 'radio_show' field was removed in API v14")
+    @JvmField
     var radio_show: Array<RadioShow> = emptyArray(),
 )

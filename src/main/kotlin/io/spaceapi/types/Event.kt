@@ -26,8 +26,12 @@ import kotlinx.serialization.UseSerializers
 
 @Serializable
 data class Event(
+    @JvmField
     var name: String,
+    @JvmField
     var type: String,
+    @JvmField
     var timestamp: Long,
+    @JvmField
     var extra: String? = null,
 )

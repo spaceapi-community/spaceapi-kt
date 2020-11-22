@@ -26,164 +26,252 @@ import kotlinx.serialization.UseSerializers
 
 @Serializable
 data class Sensors(
+    @JvmField
     var temperature: Array<Temperature> = emptyArray(),
+    @JvmField
     var door_locked: Array<DoorLocked> = emptyArray(),
+    @JvmField
     var barometer: Array<Barometer> = emptyArray(),
+    @JvmField
     var radiation: Radiation? = null,
+    @JvmField
     var humidity: Array<Humidity> = emptyArray(),
+    @JvmField
     var beverage_supply: Array<BeverageSupply> = emptyArray(),
+    @JvmField
     var power_consumption: Array<PowerConsumption> = emptyArray(),
+    @JvmField
     var wind: Array<Wind> = emptyArray(),
+    @JvmField
     var network_connections: Array<NetworkConnection> = emptyArray(),
+    @JvmField
     var account_balance: Array<AccountBalance> = emptyArray(),
+    @JvmField
     var total_member_count: Array<MemberCount> = emptyArray(),
+    @JvmField
     var people_now_present: Array<PeoplePresent> = emptyArray(),
 )
 
 @Serializable
 data class Temperature(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
+    @JvmField
     var location: String,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class DoorLocked(
+    @JvmField
     var value: Boolean,
+    @JvmField
     var location: String,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class Barometer(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
+    @JvmField
     var location: String,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class Radiation(
+    @JvmField
     var alpha: Array<RadiationSensor> = emptyArray(),
+    @JvmField
     var beta: Array<RadiationSensor> = emptyArray(),
+    @JvmField
     var gamma: Array<RadiationSensor> = emptyArray(),
+    @JvmField
     var beta_gamma: Array<RadiationSensor> = emptyArray(),
 )
 
 @Serializable
 data class RadiationSensor(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
+    @JvmField
     var dead_time: Float? = null,
+    @JvmField
     var conversion_factor: Float? = null,
+    @JvmField
     var location: String? = null,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class Humidity(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
+    @JvmField
     var location: String,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class BeverageSupply(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
+    @JvmField
     var location: String? = null,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class PowerConsumption(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
+    @JvmField
     var location: String,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class Wind(
+    @JvmField
     var properties: WindProperties,
+    @JvmField
     var location: String,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class WindProperties(
+    @JvmField
     var speed: WindSpeed,
+    @JvmField
     var gust: WindSpeed,
+    @JvmField
     var direction: WindDirection,
+    @JvmField
     var elevation: Elevation,
 )
 
 @Serializable
 data class WindSpeed(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
 )
 
 @Serializable
 data class WindDirection(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
 )
 
 @Serializable
 data class Elevation(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
 )
 
 @Serializable
 data class NetworkConnection(
+    @JvmField
     var type: String? = null,
+    @JvmField
     var value: Long,
+    @JvmField
     var location: String? = null,
+    @JvmField
     var machines: Array<Machine> = emptyArray(),
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class Machine(
+    @JvmField
     var name: String? = null,
+    @JvmField
     var mac: String,
 )
 
 @Serializable
 data class AccountBalance(
+    @JvmField
     var value: Float,
+    @JvmField
     var unit: String,
+    @JvmField
     var location: String? = null,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class MemberCount(
+    @JvmField
     var value: Long,
+    @JvmField
     var location: String? = null,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var description: String? = null,
 )
 
 @Serializable
 data class PeoplePresent(
+    @JvmField
     var value: Long,
+    @JvmField
     var location: String? = null,
+    @JvmField
     var name: String? = null,
+    @JvmField
     var names: Array<String> = emptyArray(),
+    @JvmField
     var description: String? = null,
 )

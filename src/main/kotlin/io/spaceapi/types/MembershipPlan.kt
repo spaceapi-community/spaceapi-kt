@@ -22,9 +22,14 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MembershipPlan(
+    @JvmField
     var name: String,
+    @JvmField
     var value: Float,
+    @JvmField
     var currency: String,
+    @JvmField
     var billing_interval: String,
+    @JvmField
     var description: String? = null,
 )

@@ -22,5 +22,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Cache(
+    @JvmField
     var schedule: String,
 )

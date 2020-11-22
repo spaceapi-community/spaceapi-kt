@@ -29,34 +29,57 @@ import java.net.URL
 
 @Serializable
 data class Contact(
+    @JvmField
     var phone: String? = null,
+    @JvmField
     var sip: URI? = null,
+    @JvmField
     var keymasters: Array<Keymaster> = emptyArray(),
+    @JvmField
     var irc: String? = null,
+    @JvmField
     var twitter: String? = null,
+    @JvmField
     var mastodon: String? = null,
+    @JvmField
     var facebook: String? = null,
     // Note: google plus not supported, it's dead anyways
+    @JvmField
     val identica: String? = null,
+    @JvmField
     var foursquare: String? = null,
+    @JvmField
     var email: String? = null,
+    @JvmField
     var ml: String? = null,
     @Deprecated("The 'jabber' field was renamed to 'xmpp' in API v14")
     internal var jabber: String? = null,
+    @JvmField
     var xmpp: String? = null,
+    @JvmField
     var issue_mail: String? = null,
+    @JvmField
     var gopher: String? = null,
+    @JvmField
     var matrix: String? = null,
+    @JvmField
     var mumble: String? = null,
 )
 
 @Serializable
 data class Keymaster(
+    @JvmField
     var name: String? = null,
+    @JvmField
     var irc_nick: String? = null,
+    @JvmField
     var phone: String? = null,
+    @JvmField
     var email: String? = null,
+    @JvmField
     var twitter: String? = null,
+    @JvmField
     var xmpp: String? = null,
+    @JvmField
     var mastodon: String? = null,
 )

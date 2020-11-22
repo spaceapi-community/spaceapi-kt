@@ -22,8 +22,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Location(
+    @JvmField
     var address: String? = null,
+    @JvmField
     var lat: Float,
+    @JvmField
     var lon: Float,
+    @JvmField
     var timezone: String? = null,
 )

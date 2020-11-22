@@ -28,15 +28,22 @@ import java.net.URL
 
 @Serializable
 data class State(
+    @JvmField
     var open: Boolean? = null,
+    @JvmField
     var lastchange: Long? = null,
+    @JvmField
     var trigger_person: String? = null,
+    @JvmField
     var message: String? = null,
+    @JvmField
     var icon: Icon? = null,
 )
 
 @Serializable
 data class Icon(
+    @JvmField
     var open: URL,
+    @JvmField
     var closed: URL,
 )

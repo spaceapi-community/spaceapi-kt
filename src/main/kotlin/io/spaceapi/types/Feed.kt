@@ -27,14 +27,20 @@ import java.net.URL
 
 @Serializable
 data class Feeds(
+    @JvmField
     var blog: Feed? = null,
+    @JvmField
     var wiki: Feed? = null,
+    @JvmField
     var calendar: Feed? = null,
+    @JvmField
     var flickr: Feed? = null,
 )
 
 @Serializable
 data class Feed(
+    @JvmField
     var type: String? = null,
+    @JvmField
     var url: URL,
 )

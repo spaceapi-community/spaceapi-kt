@@ -27,9 +27,14 @@ import java.net.URL
 
 @Serializable
 data class RadioShow(
+    @JvmField
     var name: String,
+    @JvmField
     var url: URL,
+    @JvmField
     var type: String,
+    @JvmField
     var start: String,
+    @JvmField
     var end: String,
 )

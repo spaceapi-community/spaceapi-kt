@@ -27,7 +27,10 @@ import java.net.URL
 
 @Serializable
 data class Link(
+    @JvmField
     var name: String,
+    @JvmField
     var description: String? = null,
+    @JvmField
     var url: URL,
 )

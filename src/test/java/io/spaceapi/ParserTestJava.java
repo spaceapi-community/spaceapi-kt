@@ -20,6 +20,6 @@ public class ParserTestJava {
     @Test
     public void testApi() throws ParseError {
         final Status statusFromString = SpaceApiParser.parseString(minimalV14Data);
-        Assert.assertEquals("Coredump", statusFromString.getSpace());
+        Assert.assertEquals("Coredump", statusFromString.space);
     }
 }
