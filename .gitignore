@@ -6,3 +6,6 @@ build
 
 # Ignore IntelliJ config
 .idea/
+
+# Local properties
+local.properties
