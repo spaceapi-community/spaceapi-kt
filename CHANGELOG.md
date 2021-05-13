@@ -11,6 +11,11 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
+### v0.3.0 (2021-05-13)
+
+- [changed] Upgrade Kotlin to 1.5
+- [changed] Upgrade kotlinx-serialization-json to 1.2.1
+
 ### v0.2.1 (2020-11-23)
 
 - [changed] All fields are now marked as @JvmField for direct access from Java
