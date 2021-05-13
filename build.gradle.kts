@@ -1,10 +1,10 @@
-import java.util.Date
+import java.net.URI
 import java.util.Properties
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 version = "0.2.1"
 description = "(De)serialization of SpaceAPI types for Kotlin and Java."
-group = "spaceapi-community"
+group = "io.github.spaceapi-community"
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
@@ -16,17 +16,18 @@ plugins {
     // Use Kotlin serialization library
     kotlin("plugin.serialization") version "1.4.10"
 
-    // Publishing via Bintray
+    // Publishing via Maven Central
     `maven-publish`
-    id("com.jfrog.bintray") version "1.8.5"
+    `signing`
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 java {
     withSourcesJar()
+    withJavadocJar()
 }
 
 dependencies {
@@ -119,33 +120,23 @@ publishing {
             }
         }
     }
-}
 
-bintray {
-    user = System.getenv("BINTRAY_USER")
-    key = System.getenv("BINTRAY_KEY")
-    publish = true
-
-    setPublications(project.name)
-
-    pkg.apply {
-        repo = "maven"
-        name = project.name
-        userOrg = "spaceapi-community"
-        githubRepo = "spaceapi-community/spaceapi-kt"
-        vcsUrl = "$githubUrl.git"
-        description = description
-        setLabels("kotlin", "java", "spaceapi", "serialization")
-        setLicenses(licenseIdentifier)
-        desc = description
-        websiteUrl = githubUrl
-        issueTrackerUrl = "$githubUrl/issues"
-        githubReleaseNotesFile = "CHANGELOG.md"
-        version.apply {
-            name = project.version.toString()
-            desc = description
-            released = Date().toString()
-            vcsTag = "v${project.version}"
+    repositories {
+        maven {
+            val releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            val snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
+            url = URI(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            if (project.hasProperty("ossrhUsername") && project.hasProperty("ossrhPassword")) {
+                credentials {
+                    username = project.property("ossrhUsername") as String?
+                    password = project.property("ossrhPassword") as String?
+                }
+            }
         }
     }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications[project.name])
 }

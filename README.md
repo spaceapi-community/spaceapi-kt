@@ -25,22 +25,18 @@ result in a `ParseError` being thrown.
 
 ### Gradle
 
-First, ensure that the Bintray repository is added to the gradle config:
+First, ensure that the Maven Central repository is added to the gradle config:
 
 ```groovy
 repositories {
-    maven {
-        url "https://dl.bintray.com/spaceapi-community/maven"
-    }
+    mavenCentral()
 }
 ```
-
-(We may at a later point in time submit the package to JCenter.)
 
 Then, add the dependency to your `build.gradle`:
 
 ```groovy
-implementation 'spaceapi-community:spaceapi-kt:0.2.1'
+implementation 'io.github.spaceapi-community:spaceapi-kt:0.2.1'
 ```
 
 
@@ -90,6 +86,28 @@ Run the following command to run the unit tests:
 In the `src/test/kotlin/io/spaceapi/` directory there's a `DirectoryParser.kt`
 program that can be executed. It fetches all directory endpoints and tests
 whether the endpoint can be deserialized. If not, an error message is printed.
+
+### Manual testing
+
+Create a local publication (usually at `$HOME/.m2/repository/`):
+
+    ./gradlew publishToMavenLocal
+
+Include it in your project like this:
+
+    repositories {
+        ...
+        mavenLocal()
+    }
+
+
+## Signing
+
+Releases are signed with the following PGP public key:
+
+    pub   rsa4096 2012-03-03 [SC] [expires: 2022-03-01]
+          EA456E8BAF0109429583EED83578F667F2F3A5FA
+    sub   rsa4096 2012-03-03 [E] [expires: 2022-03-01]
 
 
 ## License
