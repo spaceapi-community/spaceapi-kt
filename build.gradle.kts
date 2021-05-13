@@ -8,17 +8,17 @@ group = "io.github.spaceapi-community"
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.5.0"
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
 
     // Use Kotlin serialization library
-    kotlin("plugin.serialization") version "1.4.10"
+    kotlin("plugin.serialization") version "1.5.0"
 
     // Publishing via Maven Central
     `maven-publish`
-    `signing`
+    signing
 }
 
 repositories {
