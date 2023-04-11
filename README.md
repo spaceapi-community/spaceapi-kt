@@ -105,9 +105,9 @@ Include it in your project like this:
 
 Releases are signed with the following PGP public key:
 
-    pub   rsa4096 2012-03-03 [SC] [expires: 2022-03-01]
-          EA456E8BAF0109429583EED83578F667F2F3A5FA
-    sub   rsa4096 2012-03-03 [E] [expires: 2022-03-01]
+    pub   ed25519 2022-11-19 [C]
+          20EE002D778AE197EF7D0D2CB993FF98A90C9AB1
+    sub   ed25519/0x73574DD095640FCF 2022-11-19 [S] [expires: 2025-11-18]
 
 
 ## License
