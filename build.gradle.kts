@@ -2,7 +2,7 @@ import java.net.URI
 import java.util.Properties
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
-version = "0.3.0"
+version = "0.4.0"
 description = "(De)serialization of SpaceAPI types for Kotlin and Java."
 group = "io.github.spaceapi-community"
 

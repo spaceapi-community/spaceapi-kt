@@ -11,6 +11,13 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
+### v0.4.0 (2023-04-11)
+
+- [changed] Upgrade Gradle to 8
+- [changed] Upgrade Kotlin to 1.8
+- [changed] Upgrade kotlinx-serialization-json to 1.5
+- [added] CI: Test on Java 16 and 18 as well
+
 ### v0.3.0 (2021-05-13)
 
 - [changed] Upgrade Kotlin to 1.5
