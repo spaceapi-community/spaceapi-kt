@@ -25,7 +25,6 @@ import io.spaceapi.types.serializers.URLSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import java.net.URI
-import java.net.URL
 
 @Serializable
 data class Contact(
@@ -43,7 +42,7 @@ data class Contact(
     var mastodon: String? = null,
     @JvmField
     var facebook: String? = null,
-    // Note: google plus not supported, it's dead anyways
+    // Note: google plus not supported, it's dead anyway
     @JvmField
     val identica: String? = null,
     @JvmField

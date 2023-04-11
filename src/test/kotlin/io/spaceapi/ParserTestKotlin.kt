@@ -111,14 +111,14 @@ class ParserTestKotlin {
         assertEquals(setOf("email", "twitter"), parsed.issue_report_channels)
     }
 
-    val minimalV14Data = """{
+    private val minimalV14Data = """{
         "api_compatibility": ["14"],
         "space": "Coredump",
         "logo": "https://www.coredump.ch/wp-content/uploads/2016/11/logo.png",
         "url": "https://www.coredump.ch/",
         "location": {"lon": 47.2251, "lat": 8.8339},
         "contact": {}
-    }""";
+    }"""
 
     @Test
     fun testParseV14Minimal() {
@@ -174,7 +174,7 @@ class ParserTestKotlin {
     /**
      * Helper function.
      */
-    fun assertThrowsParseError(input: String, expectedMessage: String) {
+    private fun assertThrowsParseError(input: String, expectedMessage: String) {
         try {
             parseString(input)
             Assert.fail("Did not throw ParseError")
