@@ -25,6 +25,8 @@ jobs:
         run: ./gradlew assemble
       - name: Test with Gradle
         run: ./gradlew test
+      - name: Build JAR
+        run: ./gradlew jar
 
   validation:
     name: "Validation"
