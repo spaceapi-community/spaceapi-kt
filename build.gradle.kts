@@ -36,14 +36,14 @@ dependencies {
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     // Use serialization library
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 
     // Kotlin helper libraries
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 
     // HTTP client for DirectoryParser
-    testImplementation("com.github.kittinunf.fuel:fuel:2.3.0")
+    testImplementation("com.github.kittinunf.fuel:fuel:2.3.1")
 }
 
 tasks.test {
