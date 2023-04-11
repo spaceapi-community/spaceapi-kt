@@ -115,7 +115,7 @@ Releases are signed with the following PGP public key:
 This project is licensed under the GNU General Public License v3.0 or later.
 
     spaceapi-kt
-    Copyright (C) 2020-2021 Danilo Bargen
+    Copyright (C) 2020-2023 Danilo Bargen
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

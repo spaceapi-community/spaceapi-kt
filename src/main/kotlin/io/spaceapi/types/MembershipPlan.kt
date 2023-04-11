@@ -1,7 +1,7 @@
 /**
  * spaceapi-kt
  * https://github.com/spaceapi-community/spaceapi-kt/
- * Copyright (C) 2020-2021 Danilo Bargen
+ * Copyright (C) 2020-2023 Danilo Bargen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
