@@ -8,13 +8,13 @@ group = "io.github.spaceapi-community"
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    kotlin("jvm") version "1.5.0"
+    kotlin("jvm") version "1.8.10"
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
 
     // Use Kotlin serialization library
-    kotlin("plugin.serialization") version "1.5.0"
+    kotlin("plugin.serialization") version "1.8.10"
 
     // Publishing via Maven Central
     `maven-publish`
@@ -34,16 +34,16 @@ dependencies {
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
     // Use serialization library
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 
     // Kotlin helper libraries
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 
     // HTTP client for DirectoryParser
-    testImplementation("com.github.kittinunf.fuel:fuel:2.3.0")
+    testImplementation("com.github.kittinunf.fuel:fuel:2.3.1")
 }
 
 tasks.test {
