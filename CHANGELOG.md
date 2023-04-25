@@ -11,6 +11,10 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
+### Unreleased
+
+- [fixed] Make `spacefed.spacephone` a non-required field (#34)
+
 ### v0.4.0 (2023-04-11)
 
 - [changed] Upgrade Gradle to 8

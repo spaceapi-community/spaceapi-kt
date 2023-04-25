@@ -28,5 +28,5 @@ data class SpaceFed(
     var spacesaml: Boolean,
     @Deprecated("The 'spacephone' field was removed in API v14")
     @JvmField
-    var spacephone: Boolean,
+    var spacephone: Boolean = false,
 )

@@ -1,6 +1,7 @@
 package io.spaceapi
 
 import io.spaceapi.types.Contact
+import io.spaceapi.types.SpaceFed
 import io.spaceapi.types.State
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -58,6 +59,7 @@ class ParserTestKotlin {
         assertEquals("@coredump_ch", parsed.contact.twitter)
         assertEquals(null, parsed.contact.facebook)
 
+        @Suppress("DEPRECATION")
         assertEquals(setOf("email", "twitter"), parsed.issue_report_channels)
     }
 
@@ -108,6 +110,7 @@ class ParserTestKotlin {
         assertEquals("@coredump_ch", parsed.contact.twitter)
         assertEquals(null, parsed.contact.facebook)
 
+        @Suppress("DEPRECATION")
         assertEquals(setOf("email", "twitter"), parsed.issue_report_channels)
     }
 
@@ -132,6 +135,7 @@ class ParserTestKotlin {
         assertEquals(47.2251f, parsed.location.lon)
         assertEquals(8.8339f, parsed.location.lat)
 
+        @Suppress("DEPRECATION")
         assertEquals(emptySet(), parsed.issue_report_channels)
         assertEquals(null, parsed.state)
     }
@@ -242,5 +246,31 @@ class ParserTestKotlin {
             e.printStackTrace()
             Assert.fail("Unwrapped exception thrown!")
         }
+    }
+
+    @Test
+    fun parseSpaceFedWithPhone() {
+        val parsed: SpaceFed = Json.decodeFromString("""{
+            "spacesaml": true,
+            "spacenet": false,
+            "spacephone": true
+        }""")
+        assertEquals(true, parsed.spacesaml)
+        assertEquals(false, parsed.spacenet)
+        assertEquals(true, parsed.spacephone)
+    }
+
+    /**
+     * Regression test for #34.
+     */
+    @Test
+    fun parseSpaceFedWithoutPhone() {
+        val parsed: SpaceFed = Json.decodeFromString("""{
+            "spacesaml":false,
+            "spacenet":true
+        }""")
+        assertEquals(false, parsed.spacesaml)
+        assertEquals(true, parsed.spacenet)
+        assertEquals(false, parsed.spacephone)
     }
 }
