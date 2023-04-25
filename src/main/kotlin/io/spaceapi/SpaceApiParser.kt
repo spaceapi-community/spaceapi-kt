@@ -72,6 +72,7 @@ fun parseString(json: String): Status {
     }
 
     // Map renamed fields to new name
+    @Suppress("DEPRECATION")
     if (decoded.contact.jabber != null && decoded.contact.xmpp == null) {
         decoded.contact.xmpp = decoded.contact.jabber
     }
