@@ -257,6 +257,7 @@ class ParserTestKotlin {
         }""")
         assertEquals(true, parsed.spacesaml)
         assertEquals(false, parsed.spacenet)
+        @Suppress("DEPRECATION")
         assertEquals(true, parsed.spacephone)
     }
 
@@ -271,6 +272,7 @@ class ParserTestKotlin {
         }""")
         assertEquals(false, parsed.spacesaml)
         assertEquals(true, parsed.spacenet)
+        @Suppress("DEPRECATION")
         assertEquals(false, parsed.spacephone)
     }
 }

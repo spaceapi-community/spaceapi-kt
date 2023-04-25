@@ -13,6 +13,8 @@ Possible log types:
 
 ### Unreleased
 
+### v0.4.1 (2023-04-25)
+
 - [fixed] Make `spacefed.spacephone` a non-required field (#34)
 
 ### v0.4.0 (2023-04-11)
