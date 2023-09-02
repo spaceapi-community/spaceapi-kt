@@ -16,22 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:UseSerializers(URLSerializer::class, RoundingLongSerializer::class)
+@file:UseSerializers(URLSerializer::class, TimestampSerializer::class)
 
 package io.spaceapi.types
 
-import io.spaceapi.types.serializers.RoundingLongSerializer
+import io.spaceapi.types.serializers.TimestampSerializer
 import io.spaceapi.types.serializers.URLSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import java.net.URL
+import java.time.Instant
 
 @Serializable
 data class State(
     @JvmField
     var open: Boolean? = null,
     @JvmField
-    var lastchange: Long? = null,
+    var lastchange: Instant? = null,
     @JvmField
     var trigger_person: String? = null,
     @JvmField

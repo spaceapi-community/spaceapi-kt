@@ -16,13 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:UseSerializers(RoundingLongSerializer::class)
+@file:UseSerializers(TimestampSerializer::class)
 
 package io.spaceapi.types
 
-import io.spaceapi.types.serializers.RoundingLongSerializer
+import io.spaceapi.types.serializers.TimestampSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import java.time.Instant
 
 @Serializable
 data class Event(
@@ -31,7 +32,7 @@ data class Event(
     @JvmField
     var type: String,
     @JvmField
-    var timestamp: Long,
+    var timestamp: Instant,
     @JvmField
     var extra: String? = null,
 )

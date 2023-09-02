@@ -1,14 +1,17 @@
 package io.spaceapi
 
 import io.spaceapi.types.Contact
+import io.spaceapi.types.MemberCount
 import io.spaceapi.types.SpaceFed
 import io.spaceapi.types.State
+import io.spaceapi.types.serializers.TimestampSerializer
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import org.junit.Assert
 import java.net.URL
+import java.time.Instant
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -51,7 +54,6 @@ class ParserTestKotlin {
 
         assertEquals(false, parsed.state!!.open)
         assertEquals(null, parsed.state!!.lastchange)
-        assertEquals("Open Mondays from 20:00", parsed.state!!.message)
         assertEquals("Open Mondays from 20:00", parsed.state!!.message)
 
         assertEquals("vorstand@lists.coredump.ch", parsed.contact.email)
@@ -102,7 +104,6 @@ class ParserTestKotlin {
 
         assertEquals(false, parsed.state!!.open)
         assertEquals(null, parsed.state!!.lastchange)
-        assertEquals("Open Mondays from 20:00", parsed.state!!.message)
         assertEquals("Open Mondays from 20:00", parsed.state!!.message)
 
         assertEquals("vorstand@lists.coredump.ch", parsed.contact.email)
@@ -156,14 +157,10 @@ class ParserTestKotlin {
      */
     @Test
     fun parseFloatAsInteger() {
-        val parsed: State = Json.decodeFromString("""{
-            "open": false,
-            "message": "Open Mondays from 20:00",
-            "lastchange": 1605400210.0
+        val parsed: MemberCount = Json.decodeFromString("""{
+            "value": 42.0
         }""")
-        assertEquals(false, parsed.open)
-        assertEquals("Open Mondays from 20:00", parsed.message)
-        assertEquals(1605400210L, parsed.lastchange)
+        assertEquals(42L, parsed.value)
     }
 
     /**
@@ -274,5 +271,31 @@ class ParserTestKotlin {
         assertEquals(true, parsed.spacenet)
         @Suppress("DEPRECATION")
         assertEquals(false, parsed.spacephone)
+    }
+
+    @Test
+    fun parseTimestampsAsInstant() {
+        val parsed: State = Json.decodeFromString("""{
+            "open": true,
+            "lastchange": 1693685542
+        }""")
+        assertEquals(true, parsed.open)
+        assertEquals(Instant.ofEpochSecond(1693685542), parsed.lastchange)
+    }
+
+    @Test
+    fun parseFloatTimestampsAsInstant() {
+        val parsed: State = Json.decodeFromString("""{
+            "open": true,
+            "lastchange": 1693685542.1234321
+        }""")
+        assertEquals(true, parsed.open)
+        assertEquals(Instant.ofEpochMilli(1693685542000), parsed.lastchange)
+    }
+
+    @Test
+    fun serializeInstantsAsLong() {
+        val serialized = Json.encodeToString(TimestampSerializer, Instant.ofEpochSecond(1693685542))
+        assertEquals("1693685542", serialized)
     }
 }
