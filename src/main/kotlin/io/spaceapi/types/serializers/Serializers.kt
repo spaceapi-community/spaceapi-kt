@@ -31,7 +31,6 @@ import java.net.URL
 import kotlin.math.round
 
 @ExperimentalSerializationApi
-@Serializer(forClass = URL::class)
 object URLSerializer : KSerializer<URL> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("URL", PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: URL) = encoder.encodeString(value.toString())
@@ -39,7 +38,6 @@ object URLSerializer : KSerializer<URL> {
 }
 
 @ExperimentalSerializationApi
-@Serializer(forClass = URI::class)
 object URISerializer : KSerializer<URI> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("URI", PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: URI) = encoder.encodeString(value.toString())
@@ -51,7 +49,6 @@ object URISerializer : KSerializer<URI> {
  * by rounding to the closest integer.
  */
 @ExperimentalSerializationApi
-@Serializer(forClass = Long::class)
 object RoundingLongSerializer : KSerializer<Long> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("RoundingLong", PrimitiveKind.LONG)
     override fun serialize(encoder: Encoder, value: Long) = encoder.encodeLong(value)
