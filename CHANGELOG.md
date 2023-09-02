@@ -13,6 +13,8 @@ Possible log types:
 
 ### Unreleased
 
+### v0.5.0 (2023-09-02)
+
 - [changed] Serialize and deserialize timestamp fields as `Instant` (#36)
 - [changed] If you're using this library on Android, this requires at least API
   level 26 (Android 8), or a backport of the `java.time` APIs! (#36)
