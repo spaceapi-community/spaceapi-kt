@@ -13,6 +13,10 @@ Possible log types:
 
 ### Unreleased
 
+- [changed] Serialize and deserialize timestamp fields as `Instant` (#36)
+- [changed] If you're using this library on Android, this requires at least API
+  level 26 (Android 8), or a backport of the `java.time` APIs! (#36)
+
 ### v0.4.1 (2023-04-25)
 
 - [fixed] Make `spacefed.spacephone` a non-required field (#34)
