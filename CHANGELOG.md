@@ -13,6 +13,8 @@ Possible log types:
 
 ### Unreleased
 
+### v0.6.0 (2024-05-05)
+
 - [added] Implement `network_traffic` sensor (#22)
 - [changed] Serialize and deserialize all URLs as `String` instead of
   `java.net.URL`, because of various problems with the Java URL API, including
