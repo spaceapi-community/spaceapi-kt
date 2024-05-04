@@ -11,6 +11,7 @@ import java.net.URL
 import java.time.Instant
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 class ParserTestKotlin {
     @Test
@@ -309,5 +310,54 @@ class ParserTestKotlin {
         }""")
         assertEquals("ical", parsed.calendar?.type)
         assertEquals("webcal://example.com/remote.php/dav/public-calendars/asdf/?export", parsed.calendar?.url)
+    }
+
+    @Test
+    fun parseNetworkTrafficSensorMinimal() {
+        val parsed: NetworkTraffic = Json.decodeFromString("""{
+            "properties": {}
+        }""")
+        assertNull(parsed.properties.bits_per_second)
+        assertNull(parsed.properties.packets_per_second)
+    }
+
+    @Test
+    fun parseNetworkTrafficSensorMinimalWithValues() {
+        val parsed: NetworkTraffic = Json.decodeFromString("""{
+            "properties": {
+                "bits_per_second": {
+                    "value": 10737418240
+                },
+                "packets_per_second": {
+                    "value": 273987239
+                }
+            }
+        }""")
+        assertEquals(10737418240L, parsed.properties.bits_per_second?.value)
+        assertEquals(273987239L, parsed.properties.packets_per_second?.value)
+    }
+
+    @Test
+    fun parseNetworkTrafficSensorFull() {
+        val parsed: NetworkTraffic = Json.decodeFromString("""{
+            "properties": {
+                "bits_per_second": {
+                    "value": 10737418240,
+                    "maximum": 26843545600
+                },
+                "packets_per_second": {
+                    "value": 273987239
+                }
+            },
+            "name": "Internet Downlink",
+            "location": "Primary internet connection",
+            "description": "Our 25Gbps internet connection, downlink"
+        }""")
+        assertEquals(10737418240L, parsed.properties.bits_per_second?.value)
+        assertEquals(26843545600, parsed.properties.bits_per_second?.maximum)
+        assertEquals(273987239L, parsed.properties.packets_per_second?.value)
+        assertEquals("Internet Downlink", parsed.name)
+        assertEquals("Primary internet connection", parsed.location)
+        assertEquals("Our 25Gbps internet connection, downlink", parsed.description)
     }
 }
