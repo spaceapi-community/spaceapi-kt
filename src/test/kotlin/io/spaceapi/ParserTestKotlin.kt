@@ -1,9 +1,6 @@
 package io.spaceapi
 
-import io.spaceapi.types.Contact
-import io.spaceapi.types.MemberCount
-import io.spaceapi.types.SpaceFed
-import io.spaceapi.types.State
+import io.spaceapi.types.*
 import io.spaceapi.types.serializers.TimestampSerializer
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -131,7 +128,7 @@ class ParserTestKotlin {
         assertEquals(setOf("14"), parsed.api_compatibility)
         assertEquals("Coredump", parsed.space)
         assertEquals("https://www.coredump.ch/wp-content/uploads/2016/11/logo.png", parsed.logo)
-        assertEquals(URL("https://www.coredump.ch/"), parsed.url)
+        assertEquals("https://www.coredump.ch/", parsed.url)
         assertEquals(null, parsed.location.address)
         assertEquals(47.2251f, parsed.location.lon)
         assertEquals(8.8339f, parsed.location.lat)
@@ -297,5 +294,20 @@ class ParserTestKotlin {
     fun serializeInstantsAsLong() {
         val serialized = Json.encodeToString(TimestampSerializer, Instant.ofEpochSecond(1693685542))
         assertEquals("1693685542", serialized)
+    }
+
+    /**
+     * Regression test for #37.
+     */
+    @Test
+    fun parseFeedWithNonstandardUrl() {
+        val parsed: Feeds = Json.decodeFromString("""{
+            "calendar": {
+                "type": "ical",
+                "url": "webcal://example.com/remote.php/dav/public-calendars/asdf/?export"
+            }
+        }""")
+        assertEquals("ical", parsed.calendar?.type)
+        assertEquals("webcal://example.com/remote.php/dav/public-calendars/asdf/?export", parsed.calendar?.url)
     }
 }

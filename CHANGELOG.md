@@ -13,6 +13,10 @@ Possible log types:
 
 ### Unreleased
 
+- [changed] Serialize and deserialize all URLs as `String` instead of
+  `java.net.URL`, because of various problems with the Java URL API, including
+  the rejection of perfectly valid URLs (#37)
+
 ### v0.5.0 (2023-09-02)
 
 - [changed] Serialize and deserialize timestamp fields as `Instant` (#36)
