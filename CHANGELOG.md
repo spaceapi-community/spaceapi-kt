@@ -13,6 +13,11 @@ Possible log types:
 
 ### Unreleased
 
+### v0.6.1 (2024-05-05)
+
+- [fixed] Correctly publish library with Java 8 support. (Version 0.6.0 was
+  accidentally published for Java 17+ only.)
+
 ### v0.6.0 (2024-05-05)
 
 - [added] Implement `network_traffic` sensor (#22)
