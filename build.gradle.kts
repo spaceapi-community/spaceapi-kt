@@ -1,6 +1,7 @@
 import java.net.URI
 import java.util.Properties
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 version = "0.6.0"
 description = "(De)serialization of SpaceAPI types for Kotlin and Java."
@@ -26,8 +27,17 @@ repositories {
 }
 
 java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
     withSourcesJar()
     withJavadocJar()
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
