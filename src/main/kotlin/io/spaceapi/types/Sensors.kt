@@ -50,6 +50,8 @@ data class Sensors(
     var total_member_count: Array<MemberCount> = emptyArray(),
     @JvmField
     var people_now_present: Array<PeoplePresent> = emptyArray(),
+    @JvmField
+    var network_traffic: Array<NetworkTraffic> = emptyArray(),
 )
 
 @Serializable
@@ -274,4 +276,38 @@ data class PeoplePresent(
     var names: Array<String> = emptyArray(),
     @JvmField
     var description: String? = null,
+)
+
+@Serializable
+data class NetworkTraffic(
+    @JvmField
+    var properties: NetworkTrafficProperties,
+    @JvmField
+    var name: String? = null,
+    @JvmField
+    var location: String? = null,
+    @JvmField
+    var description: String? = null,
+)
+
+@Serializable
+data class NetworkTrafficProperties(
+    @JvmField
+    var bits_per_second: BitsPerSecond? = null,
+    @JvmField
+    var packets_per_second: PacketsPerSecond? = null,
+)
+
+@Serializable
+data class BitsPerSecond(
+    @JvmField
+    var value: Long,
+    @JvmField
+    var maximum: Long? = null,
+)
+
+@Serializable
+data class PacketsPerSecond(
+    @JvmField
+    var value: Long,
 )
