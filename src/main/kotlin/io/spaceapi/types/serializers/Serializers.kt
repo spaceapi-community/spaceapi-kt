@@ -26,18 +26,12 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import java.net.URI
-import java.net.URL
 import java.time.Instant
-import java.util.Date
 import kotlin.math.round
 
-@ExperimentalSerializationApi
-object URLSerializer : KSerializer<URL> {
-    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("URL", PrimitiveKind.STRING)
-    override fun serialize(encoder: Encoder, value: URL) = encoder.encodeString(value.toString())
-    override fun deserialize(decoder: Decoder): URL = URL(decoder.decodeString())
-}
-
+/**
+ * A serializer for URIs.
+ */
 @ExperimentalSerializationApi
 object URISerializer : KSerializer<URI> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("URI", PrimitiveKind.STRING)

@@ -16,15 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:UseSerializers(URLSerializer::class, TimestampSerializer::class)
+@file:UseSerializers(TimestampSerializer::class)
 
 package io.spaceapi.types
 
 import io.spaceapi.types.serializers.TimestampSerializer
-import io.spaceapi.types.serializers.URLSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import java.net.URL
 import java.time.Instant
 
 @Serializable
@@ -44,7 +42,7 @@ data class State(
 @Serializable
 data class Icon(
     @JvmField
-    var open: URL,
+    var open: String,
     @JvmField
-    var closed: URL,
+    var closed: String,
 )

@@ -16,11 +16,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:UseSerializers(URLSerializer::class)
-
 package io.spaceapi.types
 
-import io.spaceapi.types.serializers.URLSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import java.net.URL
@@ -32,5 +29,5 @@ data class Link(
     @JvmField
     var description: String? = null,
     @JvmField
-    var url: URL,
+    var url: String,
 )
