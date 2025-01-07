@@ -19,21 +19,15 @@
 package io.spaceapi.types
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.UseSerializers
+import java.net.URL
 
 @Serializable
-data class Location(
+data class Area(
     @JvmField
-    var address: String? = null,
+    var name: String? = null,
     @JvmField
-    var lat: Float? = null,
+    var description: String? = null,
     @JvmField
-    var lon: Float? = null,
-    @JvmField
-    var timezone: String? = null,
-    @JvmField
-    var country_code: String? = null,
-    @JvmField
-    var areas: Array<Area> = emptyArray(),
-    @JvmField
-    var hint: String? = null,
+    var square_meters: Float,
 )

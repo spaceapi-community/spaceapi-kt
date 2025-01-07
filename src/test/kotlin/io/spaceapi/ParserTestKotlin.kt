@@ -46,9 +46,9 @@ class ParserTestKotlin {
         assertEquals("https://www.coredump.ch/wp-content/uploads/2016/11/logo.png", parsed.logo)
         assertEquals("https://www.coredump.ch/", parsed.url.toString())
 
-        assertEquals("Neue Jonastrasse 107, 8640 Rapperswil, Switzerland", parsed.location.address)
-        assertEquals(47.2251f, parsed.location.lon)
-        assertEquals(8.8339f, parsed.location.lat)
+        assertEquals("Neue Jonastrasse 107, 8640 Rapperswil, Switzerland", parsed.location!!.address)
+        assertEquals(47.2251f, parsed.location!!.lon)
+        assertEquals(8.8339f, parsed.location!!.lat)
 
         assertEquals(false, parsed.state!!.open)
         assertEquals(null, parsed.state!!.lastchange)
@@ -96,9 +96,9 @@ class ParserTestKotlin {
         assertEquals("https://www.coredump.ch/wp-content/uploads/2016/11/logo.png", parsed.logo)
         assertEquals("https://www.coredump.ch/", parsed.url.toString())
 
-        assertEquals("Neue Jonastrasse 107, 8640 Rapperswil, Switzerland", parsed.location.address)
-        assertEquals(47.2251f, parsed.location.lon)
-        assertEquals(8.8339f, parsed.location.lat)
+        assertEquals("Neue Jonastrasse 107, 8640 Rapperswil, Switzerland", parsed.location!!.address)
+        assertEquals(47.2251f, parsed.location!!.lon)
+        assertEquals(8.8339f, parsed.location!!.lat)
 
         assertEquals(false, parsed.state!!.open)
         assertEquals(null, parsed.state!!.lastchange)
@@ -130,9 +130,9 @@ class ParserTestKotlin {
         assertEquals("Coredump", parsed.space)
         assertEquals("https://www.coredump.ch/wp-content/uploads/2016/11/logo.png", parsed.logo)
         assertEquals("https://www.coredump.ch/", parsed.url)
-        assertEquals(null, parsed.location.address)
-        assertEquals(47.2251f, parsed.location.lon)
-        assertEquals(8.8339f, parsed.location.lat)
+        assertEquals(null, parsed.location!!.address)
+        assertEquals(47.2251f, parsed.location!!.lon)
+        assertEquals(8.8339f, parsed.location!!.lat)
 
         @Suppress("DEPRECATION")
         assertEquals(emptySet(), parsed.issue_report_channels)
@@ -148,6 +148,93 @@ class ParserTestKotlin {
         val parsed = fromJsonElement(JsonObject(map))
         assertEquals("Coredump", parsed.space)
         assertEquals(setOf("14"), parsed.api_compatibility)
+    }
+
+   @Test
+    fun testParseV15FromString() {
+        val parsed = parseString("""
+            {
+              "api": "0.13",
+              "api_compatibility": ["14", "15"],
+              "space": "Coredump",
+              "logo": "https://www.coredump.ch/wp-content/uploads/2016/11/logo.png",
+              "url": "https://www.coredump.ch/",
+              "location": {
+                "address": "Neue Jonastrasse 107, 8640 Rapperswil, Switzerland",
+                "lon": 47.2251,
+                "lat": 8.8339,
+                "country_code": "CH",
+                "hint": "Ring bell twice"
+              },
+              "contact": {
+                "email": "vorstand@lists.coredump.ch",
+                "irc": "irc://freenode.net/#coredump",
+                "twitter": "@coredump_ch"
+              },
+              "issue_report_channels": ["email", "twitter"],
+              "state": {
+                "open": false,
+                "message": "Open Mondays from 20:00"
+              },
+              "linked_spaces": [
+                {
+                  "endpoint": "https://spaceapi.kabelsalat.ch/",
+                  "website": "https://ccc-basel.ch/"
+                }
+              ]
+            }
+        """)
+
+        assertEquals("Coredump", parsed.space)
+        assertEquals("0.13", parsed.api)
+        assertEquals(setOf("14", "15"), parsed.api_compatibility)
+        assertEquals("https://www.coredump.ch/wp-content/uploads/2016/11/logo.png", parsed.logo)
+        assertEquals("https://www.coredump.ch/", parsed.url.toString())
+
+        assertEquals("Neue Jonastrasse 107, 8640 Rapperswil, Switzerland", parsed.location!!.address)
+        assertEquals(47.2251f, parsed.location!!.lon)
+        assertEquals(8.8339f, parsed.location!!.lat)
+        assertEquals("CH", parsed.location!!.country_code)
+        assertEquals("Ring bell twice", parsed.location!!.hint)
+
+        assertEquals(false, parsed.state!!.open)
+        assertEquals(null, parsed.state!!.lastchange)
+        assertEquals("Open Mondays from 20:00", parsed.state!!.message)
+
+        assertEquals("vorstand@lists.coredump.ch", parsed.contact.email)
+        assertEquals("irc://freenode.net/#coredump", parsed.contact.irc)
+        assertEquals("@coredump_ch", parsed.contact.twitter)
+        assertEquals(null, parsed.contact.facebook)
+
+        assertEquals(1, parsed.linked_spaces.size)
+        assertEquals("https://spaceapi.kabelsalat.ch/", parsed.linked_spaces[0].endpoint)
+        assertEquals("https://ccc-basel.ch/", parsed.linked_spaces[0].website)
+
+        @Suppress("DEPRECATION")
+        assertEquals(setOf("email", "twitter"), parsed.issue_report_channels)
+    }
+
+     private val minimalV15Data = """{
+        "api_compatibility": ["15"],
+        "space": "Coredump",
+        "logo": "https://www.coredump.ch/wp-content/uploads/2016/11/logo.png",
+        "url": "https://www.coredump.ch/",
+        "contact": {}
+    }"""
+
+    @Test
+    fun testParseV15inimal() {
+        val parsed = parseString(minimalV15Data)
+
+        assertEquals(setOf("15"), parsed.api_compatibility)
+        assertEquals("Coredump", parsed.space)
+        assertEquals("https://www.coredump.ch/wp-content/uploads/2016/11/logo.png", parsed.logo)
+        assertEquals("https://www.coredump.ch/", parsed.url)
+        assertEquals(null, parsed.location)
+
+        @Suppress("DEPRECATION")
+        assertEquals(emptySet(), parsed.issue_report_channels)
+        assertEquals(null, parsed.state)
     }
 
     /**

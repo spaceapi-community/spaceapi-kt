@@ -38,7 +38,7 @@ data class Status(
     @JvmField
     var url: String,
     @JvmField
-    var location: Location,
+    var location: Location? = null,
     @JvmField
     var spacefed: SpaceFed? = null,
     @JvmField
@@ -71,4 +71,6 @@ data class Status(
     @Deprecated("The 'radio_show' field was removed in API v14")
     @JvmField
     var radio_show: Array<RadioShow> = emptyArray(),
+    @JvmField
+    var linked_spaces: Array<LinkedSpace> = emptyArray(),
 )
