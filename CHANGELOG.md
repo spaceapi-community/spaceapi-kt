@@ -13,6 +13,10 @@ Possible log types:
 
 ### Unreleased
 
+### v0.7.0 (2025-01-11)
+
+- [added] Support for schema v15 (#42)
+
 ### v0.6.1 (2024-05-05)
 
 - [fixed] Correctly publish library with Java 8 support. (Version 0.6.0 was

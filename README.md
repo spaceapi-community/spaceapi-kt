@@ -37,7 +37,7 @@ repositories {
 Then, add the dependency to your `build.gradle`:
 
 ```groovy
-implementation 'io.github.spaceapi-community:spaceapi-kt:0.6.1'
+implementation 'io.github.spaceapi-community:spaceapi-kt:0.7.0'
 ```
 
 
