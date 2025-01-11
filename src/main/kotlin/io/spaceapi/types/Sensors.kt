@@ -52,6 +52,10 @@ data class Sensors(
     var people_now_present: Array<PeoplePresent> = emptyArray(),
     @JvmField
     var network_traffic: Array<NetworkTraffic> = emptyArray(),
+    @JvmField
+    var power_generation: Array<PowerGeneration> = emptyArray(),
+    @JvmField
+    var carbondioxide: Array<CarbonDioxide> = emptyArray(),
 )
 
 @Serializable
@@ -66,6 +70,8 @@ data class Temperature(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -78,6 +84,8 @@ data class DoorLocked(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -92,6 +100,8 @@ data class Barometer(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -122,6 +132,8 @@ data class RadiationSensor(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -136,6 +148,8 @@ data class Humidity(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -150,6 +164,8 @@ data class BeverageSupply(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -164,6 +180,8 @@ data class PowerConsumption(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -176,6 +194,8 @@ data class Wind(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -228,6 +248,8 @@ data class NetworkConnection(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -250,6 +272,8 @@ data class AccountBalance(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -262,6 +286,8 @@ data class MemberCount(
     var name: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -276,6 +302,8 @@ data class PeoplePresent(
     var names: Array<String> = emptyArray(),
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -288,6 +316,8 @@ data class NetworkTraffic(
     var location: String? = null,
     @JvmField
     var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )
 
 @Serializable
@@ -310,4 +340,36 @@ data class BitsPerSecond(
 data class PacketsPerSecond(
     @JvmField
     var value: Long,
+)
+
+@Serializable
+data class PowerGeneration(
+    @JvmField
+    var value: Float,
+    @JvmField
+    var unit: String,
+    @JvmField
+    var location: String,
+    @JvmField
+    var name: String? = null,
+    @JvmField
+    var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
+)
+
+@Serializable
+data class CarbonDioxide(
+    @JvmField
+    var value: Float,
+    @JvmField
+    var unit: String,
+    @JvmField
+    var location: String,
+    @JvmField
+    var name: String? = null,
+    @JvmField
+    var description: String? = null,
+    @JvmField
+    var lastchange: Float? = null,
 )

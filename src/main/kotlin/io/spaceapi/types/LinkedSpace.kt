@@ -21,19 +21,9 @@ package io.spaceapi.types
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Location(
+data class LinkedSpace(
     @JvmField
-    var address: String? = null,
+    var website: String? = null,
     @JvmField
-    var lat: Float? = null,
-    @JvmField
-    var lon: Float? = null,
-    @JvmField
-    var timezone: String? = null,
-    @JvmField
-    var country_code: String? = null,
-    @JvmField
-    var areas: Array<Area> = emptyArray(),
-    @JvmField
-    var hint: String? = null,
+    var endpoint: String? = null,
 )
