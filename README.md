@@ -16,6 +16,7 @@ This library supports parsing any valid JSON file using the following schema ver
 
 - v0.13
 - v14
+- v15
 
 Note: Endpoints using versions 0.12 and older are not supported, they will
 result in a `ParseError` being thrown.

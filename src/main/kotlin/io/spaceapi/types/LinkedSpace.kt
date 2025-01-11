@@ -19,8 +19,6 @@
 package io.spaceapi.types
 
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
-import java.net.URL
 
 @Serializable
 data class LinkedSpace(

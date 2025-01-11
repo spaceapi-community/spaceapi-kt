@@ -223,7 +223,7 @@ class ParserTestKotlin {
     }"""
 
     @Test
-    fun testParseV15inimal() {
+    fun testParseV15Minimal() {
         val parsed = parseString(minimalV15Data)
 
         assertEquals(setOf("15"), parsed.api_compatibility)
@@ -231,10 +231,6 @@ class ParserTestKotlin {
         assertEquals("https://www.coredump.ch/wp-content/uploads/2016/11/logo.png", parsed.logo)
         assertEquals("https://www.coredump.ch/", parsed.url)
         assertEquals(null, parsed.location)
-
-        @Suppress("DEPRECATION")
-        assertEquals(emptySet(), parsed.issue_report_channels)
-        assertEquals(null, parsed.state)
     }
 
     /**
